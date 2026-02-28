@@ -358,9 +358,9 @@ h3 {
   color: #c98818;
 }
 
-.platform-icon.bandcamp {
-  background: rgba(98, 154, 169, 0.1);
-  color: #4b889d;
+.platform-icon.apple {
+  background: rgba(250, 36, 60, 0.1);
+  color: #FA243C;
 }
 
 .platform-card h3 {
