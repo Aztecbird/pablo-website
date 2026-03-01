@@ -438,6 +438,59 @@ h3 {
   /* removes bottom margin gap */
 }
 
+/* Dropdown Tabs */
+.dropdown-tab summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-tab summary::-webkit-details-marker {
+  display: none;
+}
+
+.dropdown-tab h3 {
+  margin-bottom: 0;
+}
+
+.dropdown-tab .dropdown-icon {
+  transition: transform 0.3s ease;
+  color: var(--text-muted);
+}
+
+.dropdown-tab[open] .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-tab[open] .embed-grid {
+  margin-top: 24px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.embed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.embed-grid .embed {
+  margin-top: 0;
+}
+
 
 /* Buttons */
 .btn {
