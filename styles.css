@@ -614,3 +614,61 @@ h3 {
     gap: 32px;
   }
 }
+
+/* QR Code & Profile Section Integration */
+.profile-section {
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+  margin-top: 32px;
+}
+
+.profile-embed-container {
+  flex: 2;
+  min-width: 300px;
+}
+
+.profile-qr-container {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-qr-container:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.qr-image-wrapper {
+  background: #FFFFFF;
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border);
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.qr-image-wrapper img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .profile-section {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
