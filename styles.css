@@ -91,25 +91,6 @@ h3 {
   color: var(--accent);
 }
 
-.brand-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.brand-icon {
-  width: 28px;
-  height: 28px;
-  color: var(--text-main);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.brand-link:hover .brand-icon {
-  transform: rotate(180deg);
-}
-
 .nav {
   display: flex;
   gap: 32px;
