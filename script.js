@@ -8,12 +8,17 @@ const lightboxImg = lightbox ? lightbox.querySelector(".lightbox-image") : null;
 const lightboxClose = lightbox ? lightbox.querySelector(".lightbox-close") : null;
 
 if (galleryItems.length && lightbox && lightboxImg) {
+    const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+
     galleryItems.forEach(item => {
         item.addEventListener("click", () => {
             const img = item.querySelector("img");
             if (img) {
                 lightboxImg.src = img.src;
                 lightboxImg.alt = img.alt;
+                if (lightboxCaption) {
+                    lightboxCaption.textContent = img.alt;
+                }
                 lightbox.classList.add("active");
                 document.body.style.overflow = "hidden"; // Prevent background scroll
             }
@@ -30,7 +35,7 @@ if (galleryItems.length && lightbox && lightboxImg) {
     }
 
     lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
+        if (e.target === lightbox || e.target.classList.contains("lightbox-content")) {
             closeLightbox();
         }
     });
