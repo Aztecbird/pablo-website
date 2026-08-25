@@ -1,86 +1,14 @@
-const catalogue = [
-  {
-    title: "Whispering Notes",
-    type: "music",
-    duration: ["medium", "long"],
-    intents: ["sleep", "anxiety", "calm", "overactive"],
-    description: "A soft sleep selection for slowing the pace of the evening and making room for rest.",
-    href: "/sleep.html",
-    action: "Listen on the sleep page"
-  },
-  {
-    title: "Relaxing Within",
-    type: "music",
-    duration: ["medium", "long"],
-    intents: ["sleep", "relax", "stress", "calm"],
-    description: "Gentle music for turning attention inward when the day still feels present.",
-    href: "/sleep.html",
-    action: "Listen on the sleep page"
-  },
-  {
-    title: "Sounds of Nature: Soft River",
-    type: "music",
-    duration: ["medium", "long"],
-    intents: ["sleep", "nature", "ground", "stress", "anxiety"],
-    description: "A natural sound environment for grounding, decompressing, or settling into sleep.",
-    href: "/sleep.html",
-    action: "Listen on the sleep page"
-  },
-  {
-    title: "Piano Peace in the Heart",
-    type: "meditation",
-    duration: ["short", "medium"],
-    intents: ["meditate", "peace", "heart", "calm", "anxiety"],
-    description: "A peaceful piano companion for returning attention to the heart and the present moment.",
-    href: "/meditation.html",
-    action: "Open the meditation page"
-  },
-  {
-    title: "Soft Piano for Inner Peace",
-    type: "meditation",
-    duration: ["short", "medium"],
-    intents: ["meditate", "peace", "quiet", "stress", "focus"],
-    description: "Soft piano for a quiet meditation, a gentle pause, or unhurried concentration.",
-    href: "/meditation.html",
-    action: "Open the meditation page"
-  },
-  {
-    title: "Bliss Moment (Slow Piano)",
-    type: "meditation",
-    duration: ["short", "medium"],
-    intents: ["bliss", "peace", "slow", "calm", "meditate"],
-    description: "A slow piano selection for a brief restorative pause and a softer inner atmosphere.",
-    href: "/meditation.html",
-    action: "Open the meditation page"
-  },
-  {
-    title: "Learn to Still Your Overactive Mind with Powerful I AM Mantras",
-    type: "course",
-    duration: ["medium", "long"],
-    intents: ["overactive", "mind", "mantra", "learn", "anxiety", "focus"],
-    description: "A structured course for working with an active mind through a focused I AM mantra practice.",
-    href: "/courses.html",
-    action: "Explore this course"
-  },
-  {
-    title: "Music & Mantras as Tools for Inner Peace",
-    type: "course",
-    duration: ["long"],
-    intents: ["mantra", "learn", "peace", "journey", "practice", "spiritual"],
-    description: "A ten-day journey for someone ready to develop a deeper practice with music and mantras.",
-    href: "/courses.html",
-    action: "Explore this course"
-  },
-  {
-    title: "One Mantra a Day with Relaxing Music",
-    type: "course",
-    duration: ["medium", "long"],
-    intents: ["mantra", "daily", "learn", "harmony", "practice"],
-    description: "A gentle daily path combining one mantra at a time with relaxing music.",
-    href: "/courses.html",
-    action: "Explore this course"
+let cataloguePromise;
+
+function loadCatalogue() {
+  if (!cataloguePromise) {
+    cataloguePromise = fetch("/catalogue.json").then((response) => {
+      if (!response.ok) throw new Error("The recommendation catalogue could not be loaded.");
+      return response.json();
+    });
   }
-];
+  return cataloguePromise;
+}
 
 const intentGroups = {
   sleep: ["sleep", "asleep", "bed", "night", "tired", "insomnia", "rest"],
@@ -110,7 +38,7 @@ function scoreItem(item, intents, duration, format) {
   return score;
 }
 
-function renderResults(matches, detectedIntents) {
+function renderResults(matches, detectedIntents, usedAi = false) {
   const result = document.querySelector("#guide-results");
   const context = detectedIntents.length
     ? `I heard a wish for ${detectedIntents.slice(0, 2).join(" and ")}.`
@@ -119,7 +47,7 @@ function renderResults(matches, detectedIntents) {
   result.innerHTML = `
     <div class="recommendation-intro">
       <div class="subtitle">A SUGGESTION FOR THIS MOMENT</div>
-      <p>${context}</p>
+      <p>${context}${usedAi ? " The AI interpreter helped understand your words." : ""}</p>
     </div>
     ${matches.map((item, index) => `
       <article class="recommendation ${index === 0 ? "featured" : ""}">
@@ -152,20 +80,41 @@ document.querySelectorAll(".prompt-chip").forEach((button) => {
   });
 });
 
-document.querySelector("#peace-guide").addEventListener("submit", (event) => {
+document.querySelector("#peace-guide").addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
   const text = String(data.get("feeling") || "").trim();
   const duration = String(data.get("duration"));
   const format = String(data.get("format"));
-  const intents = detectIntents(text);
+  const localIntents = detectIntents(text);
+  const aiEndpoint = document.querySelector('meta[name="peace-guide-api"]')?.content.trim();
+
+  if (aiEndpoint) {
+    try {
+      const response = await fetch(`${aiEndpoint.replace(/\/$/, "")}/recommend`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ text, duration, format })
+      });
+
+      if (!response.ok) throw new Error("AI recommendation unavailable");
+      const result = await response.json();
+      renderResults(result.matches, result.intents, result.mode === "ai");
+      document.querySelector("#guide-results").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    } catch (error) {
+      console.warn("Using the private on-device guide instead.", error);
+    }
+  }
+
+  const catalogue = await loadCatalogue();
 
   const matches = catalogue
-    .map((item) => ({ item, score: scoreItem(item, intents, duration, format) }))
+    .map((item) => ({ item, score: scoreItem(item, localIntents, duration, format) }))
     .sort((a, b) => b.score - a.score)
     .slice(0, 2)
     .map(({ item }) => item);
 
-  renderResults(matches, intents);
+  renderResults(matches, localIntents);
   document.querySelector("#guide-results").scrollIntoView({ behavior: "smooth", block: "center" });
 });

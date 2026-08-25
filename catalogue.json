@@ -1,0 +1,92 @@
+[
+  {
+    "id": "whispering-notes",
+    "title": "Whispering Notes",
+    "type": "music",
+    "duration": ["medium", "long"],
+    "intents": ["sleep", "anxiety", "calm", "overactive"],
+    "description": "A soft sleep selection for slowing the pace of the evening and making room for rest.",
+    "href": "/sleep.html",
+    "action": "Listen on the sleep page"
+  },
+  {
+    "id": "relaxing-within",
+    "title": "Relaxing Within",
+    "type": "music",
+    "duration": ["medium", "long"],
+    "intents": ["sleep", "relax", "stress", "calm"],
+    "description": "Gentle music for turning attention inward when the day still feels present.",
+    "href": "/sleep.html",
+    "action": "Listen on the sleep page"
+  },
+  {
+    "id": "soft-river",
+    "title": "Sounds of Nature: Soft River",
+    "type": "music",
+    "duration": ["medium", "long"],
+    "intents": ["sleep", "nature", "ground", "stress", "anxiety"],
+    "description": "A natural sound environment for grounding, decompressing, or settling into sleep.",
+    "href": "/sleep.html",
+    "action": "Listen on the sleep page"
+  },
+  {
+    "id": "peace-in-the-heart",
+    "title": "Piano Peace in the Heart",
+    "type": "meditation",
+    "duration": ["short", "medium"],
+    "intents": ["meditate", "peace", "heart", "calm", "anxiety"],
+    "description": "A peaceful piano companion for returning attention to the heart and the present moment.",
+    "href": "/meditation.html",
+    "action": "Open the meditation page"
+  },
+  {
+    "id": "soft-piano-inner-peace",
+    "title": "Soft Piano for Inner Peace",
+    "type": "meditation",
+    "duration": ["short", "medium"],
+    "intents": ["meditate", "peace", "quiet", "stress", "focus"],
+    "description": "Soft piano for a quiet meditation, a gentle pause, or unhurried concentration.",
+    "href": "/meditation.html",
+    "action": "Open the meditation page"
+  },
+  {
+    "id": "bliss-moment",
+    "title": "Bliss Moment (Slow Piano)",
+    "type": "meditation",
+    "duration": ["short", "medium"],
+    "intents": ["bliss", "peace", "slow", "calm", "meditate"],
+    "description": "A slow piano selection for a brief restorative pause and a softer inner atmosphere.",
+    "href": "/meditation.html",
+    "action": "Open the meditation page"
+  },
+  {
+    "id": "still-overactive-mind",
+    "title": "Learn to Still Your Overactive Mind with Powerful I AM Mantras",
+    "type": "course",
+    "duration": ["medium", "long"],
+    "intents": ["overactive", "mind", "mantra", "learn", "anxiety", "focus"],
+    "description": "A structured course for working with an active mind through a focused I AM mantra practice.",
+    "href": "/courses.html",
+    "action": "Explore this course"
+  },
+  {
+    "id": "music-mantras-inner-peace",
+    "title": "Music & Mantras as Tools for Inner Peace",
+    "type": "course",
+    "duration": ["long"],
+    "intents": ["mantra", "learn", "peace", "journey", "practice", "spiritual"],
+    "description": "A ten-day journey for someone ready to develop a deeper practice with music and mantras.",
+    "href": "/courses.html",
+    "action": "Explore this course"
+  },
+  {
+    "id": "one-mantra-a-day",
+    "title": "One Mantra a Day with Relaxing Music",
+    "type": "course",
+    "duration": ["medium", "long"],
+    "intents": ["mantra", "daily", "learn", "harmony", "practice"],
+    "description": "A gentle daily path combining one mantra at a time with relaxing music.",
+    "href": "/courses.html",
+    "action": "Explore this course"
+  }
+]
