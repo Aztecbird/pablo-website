@@ -560,6 +560,269 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
+/* Personal Peace Guide */
+.guide-page {
+  min-height: 75vh;
+}
+
+.guide-hero {
+  padding: 72px 0 44px;
+  text-align: center;
+}
+
+.guide-intro {
+  max-width: 760px;
+}
+
+.guide-intro .subtitle {
+  margin-bottom: 16px;
+}
+
+.guide-intro h1 {
+  font-size: clamp(44px, 7vw, 72px);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.guide-intro h1 em {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.guide-intro p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+.guide-section {
+  padding: 28px 0 88px;
+}
+
+.guide-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.guide-card,
+.guide-results {
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.guide-card {
+  padding: clamp(28px, 5vw, 48px);
+  background: var(--card-bg);
+}
+
+.guide-step {
+  border: 0;
+  padding: 0;
+  margin: 0 0 36px;
+}
+
+.guide-step label,
+.guide-step legend {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+#feeling {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid rgba(45, 42, 38, .16);
+  border-radius: 18px;
+  background: #fdfcf9;
+  color: var(--text-main);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 18px;
+}
+
+#feeling:focus {
+  outline: 3px solid rgba(194, 122, 88, .18);
+  border-color: var(--accent);
+}
+
+.prompt-chips,
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.prompt-chip,
+.choice span {
+  border: 1px solid rgba(45, 42, 38, .13);
+  border-radius: var(--radius-full);
+  background: #fdfcf9;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 14px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.prompt-chip:hover,
+.prompt-chip:focus-visible,
+.choice input:focus-visible + span,
+.choice input:checked + span {
+  border-color: var(--accent);
+  background: rgba(194, 122, 88, .1);
+  color: var(--text-main);
+}
+
+.choice {
+  margin: 0 !important;
+  font-family: 'Lato', sans-serif !important;
+}
+
+.choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice span {
+  display: block;
+}
+
+.guide-submit {
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.guide-privacy {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  margin: 14px 0 0;
+}
+
+.guide-results {
+  position: sticky;
+  top: 120px;
+  min-height: 500px;
+  padding: clamp(28px, 5vw, 44px);
+  background: linear-gradient(150deg, #2c362b, #3c493a);
+  color: #fdfbf7;
+}
+
+.guide-results h2,
+.guide-results .subtitle {
+  color: #fdfbf7;
+}
+
+.guide-results p {
+  color: rgba(253, 251, 247, .76);
+}
+
+.guide-placeholder {
+  display: flex;
+  min-height: 410px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.guide-placeholder h2 {
+  font-size: 30px;
+}
+
+.guide-symbol {
+  display: block;
+  margin-bottom: 20px;
+  color: #d9ad8f;
+  font-size: 54px;
+}
+
+.recommendation-intro {
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+}
+
+.recommendation-intro .subtitle {
+  margin-bottom: 8px;
+}
+
+.recommendation {
+  margin-top: 22px;
+}
+
+.recommendation + .recommendation {
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  padding-top: 24px;
+}
+
+.recommendation-label {
+  color: #d9ad8f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.recommendation h2 {
+  margin: 8px 0 10px;
+  text-align: left;
+  font-size: 28px;
+}
+
+.guide-results .btn {
+  border-color: rgba(255, 255, 255, .25);
+  color: #fdfbf7;
+  margin-top: 8px;
+}
+
+.guide-results .btn.primary {
+  background: #fdfbf7;
+  color: #2c362b;
+}
+
+.guide-reset {
+  margin-top: 30px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  background: transparent;
+  color: rgba(255, 255, 255, .76);
+  cursor: pointer;
+}
+
+.guide-note {
+  padding: 20px 0 64px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .guide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-results {
+    position: static;
+    min-height: 0;
+  }
+
+  .guide-placeholder {
+    min-height: 300px;
+  }
+}
+
 /* Gallery Section */
 .section-subtitle {
   text-align: center;
@@ -761,6 +1024,16 @@ h3 {
   .header-row {
     flex-direction: column;
     gap: 16px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+  }
+
+  .nav a {
+    font-size: 11px;
   }
 
   .hero h1 {

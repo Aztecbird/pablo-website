@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find Music for This Moment | Pablo Arellano</title>
+    <meta name="description"
+        content="Describe how you feel and discover Pablo Arellano's relaxing piano music, sleep sounds, meditations, and courses for this moment." />
+    <meta name="author" content="Pablo Arellano" />
+    <!-- Add the deployed Worker URL here after Pablo approves the AI version. -->
+    <meta name="peace-guide-api" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.pabloarellano.org/guide.html" />
+    <meta property="og:title" content="Find Music for This Moment | Pablo Arellano" />
+    <meta property="og:description"
+        content="A gentle guide to Pablo Arellano's music, meditations, and courses for sleep, calm, focus, and inner peace." />
+    <meta property="og:image" content="https://www.pabloarellano.org/pablo_portrait.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrap header-row">
+            <div class="brand"><a href="/" style="text-decoration: none; color: inherit;">Pablo Arellano</a></div>
+            <nav class="nav" aria-label="Main navigation">
+                <a href="/guide.html" aria-current="page">Peace Guide</a>
+                <a href="/listen.html">Listen</a>
+                <a href="/sleep.html">Sleep</a>
+                <a href="/meditation.html">Meditate</a>
+                <a href="/courses.html">Courses</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="guide-page">
+        <section class="guide-hero">
+            <div class="wrap guide-intro">
+                <div class="subtitle">A PERSONAL PEACE GUIDE</div>
+                <h1>What do you need<br><em>right now?</em></h1>
+                <p>Share a few words about this moment. I’ll guide you toward music, meditation, or a course from
+                    Pablo’s collection.</p>
+            </div>
+        </section>
+
+        <section class="guide-section" aria-labelledby="guide-title">
+            <div class="wrap guide-layout">
+                <form id="peace-guide" class="guide-card" novalidate>
+                    <div class="guide-step">
+                        <label for="feeling" id="guide-title">How are you feeling?</label>
+                        <textarea id="feeling" name="feeling" rows="3"
+                            placeholder="For example: My mind is busy and I would like to fall asleep…"
+                            maxlength="280"></textarea>
+                        <div class="prompt-chips" aria-label="Common needs">
+                            <button type="button" class="prompt-chip" data-prompt="I need help falling asleep">Sleep</button>
+                            <button type="button" class="prompt-chip" data-prompt="I feel anxious and need calm">Anxiety</button>
+                            <button type="button" class="prompt-chip" data-prompt="I want to meditate and find inner peace">Meditation</button>
+                            <button type="button" class="prompt-chip" data-prompt="I need gentle focus while I work">Focus</button>
+                            <button type="button" class="prompt-chip" data-prompt="I want to learn a daily mantra practice">Mantras</button>
+                        </div>
+                    </div>
+
+                    <fieldset class="guide-step">
+                        <legend>How much time do you have?</legend>
+                        <div class="choice-row">
+                            <label class="choice"><input type="radio" name="duration" value="short"> <span>A few minutes</span></label>
+                            <label class="choice"><input type="radio" name="duration" value="medium" checked> <span>20–60 minutes</span></label>
+                            <label class="choice"><input type="radio" name="duration" value="long"> <span>As long as I need</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="guide-step">
+                        <legend>What feels right?</legend>
+                        <div class="choice-row">
+                            <label class="choice"><input type="radio" name="format" value="any" checked> <span>Surprise me</span></label>
+                            <label class="choice"><input type="radio" name="format" value="music"> <span>Music</span></label>
+                            <label class="choice"><input type="radio" name="format" value="meditation"> <span>Meditation</span></label>
+                            <label class="choice"><input type="radio" name="format" value="course"> <span>A course</span></label>
+                        </div>
+                    </fieldset>
+
+                    <button class="btn primary guide-submit" type="submit">Find my moment of peace</button>
+                    <p class="guide-privacy">Your words stay in this browser in this prototype and are not saved.</p>
+                </form>
+
+                <aside id="guide-results" class="guide-results" aria-live="polite" aria-label="Recommendations">
+                    <div class="guide-placeholder">
+                        <span class="guide-symbol" aria-hidden="true">◌</span>
+                        <h2>Your recommendation will appear here.</h2>
+                        <p>Every result comes from Pablo’s existing collection—nothing is invented.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="guide-note">
+            <div class="wrap">
+                <p>This guide offers music and meditation suggestions for general wellbeing. It is not medical or
+                    mental-health advice.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="wrap muted">© <span id="year"></span> Pablo Arellano</div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="guide.js"></script>
+</body>
+
+</html>

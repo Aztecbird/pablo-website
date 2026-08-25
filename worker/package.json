@@ -1,0 +1,16 @@
+{
+  "name": "pablo-peace-guide-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "wrangler types --check && tsc --noEmit && wrangler deploy --dry-run",
+    "dev": "wrangler dev",
+    "types": "wrangler types"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.125.0"
+  }
+}
