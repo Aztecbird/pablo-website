@@ -90,6 +90,14 @@ function loadCatalogue() {
   return cataloguePromise;
 }
 
+function matchesFormat(item, format) {
+  if (format === "any") return true;
+  const itemFormat = normalizeText(item.format);
+  if (format === "talk") return itemFormat === "talk";
+  if (format === "meditation") return item.type === "meditation" && itemFormat !== "talk";
+  return item.type === format;
+}
+
 function scoreItem(item, intents, queryTokens, duration, format, language) {
   const title = normalizeText(item.title);
   const searchable = normalizeText(item.searchTerms || `${item.title} ${item.description}`);
@@ -99,7 +107,7 @@ function scoreItem(item, intents, queryTokens, duration, format, language) {
 
   let score = intentMatches * 8 + titleMatches * 4 + searchMatches * 1.5;
   if (item.duration.includes(duration)) score += 4;
-  if (format === "any" || item.type === format) score += 5;
+  if (matchesFormat(item, format)) score += 5;
   if (language && item.language === language) score += 5;
   if (!intents.length && item.intents.includes("peace")) score += 2;
   score += Math.min(2, Math.log10(Number(item.plays || 0) + 1) / 4);
@@ -109,7 +117,7 @@ function scoreItem(item, intents, queryTokens, duration, format, language) {
 
 function chooseCandidates(catalogue, duration, format, language) {
   let filtered = catalogue;
-  if (format !== "any") filtered = filtered.filter((item) => item.type === format);
+  if (format !== "any") filtered = filtered.filter((item) => matchesFormat(item, format));
   if (language !== "any") {
     const languageCode = language === "music" ? "m1" : language;
     filtered = filtered.filter((item) => item.language === languageCode);
