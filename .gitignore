@@ -1,4 +1,5 @@
 worker/node_modules/
 worker/.wrangler/
+worker/worker-configuration.d.ts
 worker/.dev.vars*
 !worker/.dev.vars.example

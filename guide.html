@@ -44,8 +44,8 @@
             <div class="wrap guide-intro">
                 <div class="subtitle">A PERSONAL PEACE GUIDE</div>
                 <h1>What do you need<br><em>right now?</em></h1>
-                <p>Share a few words about this moment. I’ll guide you toward music, meditation, or a course from
-                    Pablo’s collection.</p>
+                <p>Share a few words about this moment. I’ll search Pablo’s complete public Insight Timer catalogue
+                    for music, meditation, or a course that fits.</p>
             </div>
         </section>
 
@@ -63,6 +63,7 @@
                             <button type="button" class="prompt-chip" data-prompt="I want to meditate and find inner peace">Meditation</button>
                             <button type="button" class="prompt-chip" data-prompt="I need gentle focus while I work">Focus</button>
                             <button type="button" class="prompt-chip" data-prompt="I want to learn a daily mantra practice">Mantras</button>
+                            <button type="button" class="prompt-chip" data-prompt="I am moving through grief and need gentle support">Grief</button>
                         </div>
                     </div>
 
@@ -85,15 +86,26 @@
                         </div>
                     </fieldset>
 
+                    <fieldset class="guide-step">
+                        <legend>Language preference</legend>
+                        <div class="choice-row">
+                            <label class="choice"><input type="radio" name="language" value="any" checked> <span>Any language</span></label>
+                            <label class="choice"><input type="radio" name="language" value="music"> <span>No spoken words</span></label>
+                            <label class="choice"><input type="radio" name="language" value="en"> <span>English</span></label>
+                            <label class="choice"><input type="radio" name="language" value="es"> <span>Español</span></label>
+                        </div>
+                    </fieldset>
+
                     <button class="btn primary guide-submit" type="submit">Find my moment of peace</button>
-                    <p class="guide-privacy">Your words stay in this browser in this prototype and are not saved.</p>
+                    <p class="guide-privacy">Your words stay in this browser and are not saved.</p>
                 </form>
 
                 <aside id="guide-results" class="guide-results" aria-live="polite" aria-label="Recommendations">
                     <div class="guide-placeholder">
                         <span class="guide-symbol" aria-hidden="true">◌</span>
                         <h2>Your recommendation will appear here.</h2>
-                        <p>Every result comes from Pablo’s existing collection—nothing is invented.</p>
+                        <p>Every result comes from Pablo’s public Insight Timer collection—nothing is invented.</p>
+                        <p class="catalogue-status"><span id="catalogue-count">Loading the catalogue…</span></p>
                     </div>
                 </aside>
             </div>

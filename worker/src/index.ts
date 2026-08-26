@@ -8,12 +8,14 @@ const ALLOWED_ORIGINS = new Set([
 const INTENTS = [
   "sleep", "anxiety", "calm", "overactive", "relax", "stress", "nature", "ground",
   "meditate", "peace", "heart", "quiet", "focus", "bliss", "slow", "mind", "mantra",
-  "learn", "journey", "practice", "spiritual", "daily", "harmony"
+  "learn", "journey", "practice", "spiritual", "daily", "harmony", "joy", "healing",
+  "breath", "gratitude", "abundance", "confidence", "morning"
 ] as const;
 
 type Intent = typeof INTENTS[number];
 type Duration = "short" | "medium" | "long";
 type Format = "any" | "music" | "meditation" | "course";
+type Language = "any" | "music" | "en" | "es";
 type CatalogueItem = {
   id: string;
   title: string;
@@ -23,9 +25,18 @@ type CatalogueItem = {
   description: string;
   href: string;
   action: string;
+  language: string;
+  plays: number;
+  rating: number;
 };
 
-const catalogue = catalogueData as CatalogueItem[];
+type CatalogueFile = {
+  count: number;
+  items: CatalogueItem[];
+};
+
+const catalogueFile = catalogueData as CatalogueFile;
+const catalogue = catalogueFile.items;
 
 function corsHeaders(origin: string | null): HeadersInit {
   const headers: Record<string, string> = {
@@ -71,12 +82,13 @@ async function readLimitedJson(request: Request): Promise<unknown> {
   return JSON.parse(new TextDecoder().decode(bytes));
 }
 
-function parseInput(value: unknown): { text: string; duration: Duration; format: Format } {
+function parseInput(value: unknown): { text: string; duration: Duration; format: Format; language: Language } {
   if (!value || typeof value !== "object") throw new Error("Invalid request");
   const body = value as Record<string, unknown>;
   const text = typeof body.text === "string" ? body.text.trim() : "";
   const duration = body.duration;
   const format = body.format;
+  const language = body.language;
 
   if (!text || text.length > 280) throw new Error("Please use between 1 and 280 characters");
   if (duration !== "short" && duration !== "medium" && duration !== "long") {
@@ -85,7 +97,10 @@ function parseInput(value: unknown): { text: string; duration: Duration; format:
   if (format !== "any" && format !== "music" && format !== "meditation" && format !== "course") {
     throw new Error("Invalid format");
   }
-  return { text, duration, format };
+  if (language !== "any" && language !== "music" && language !== "en" && language !== "es") {
+    throw new Error("Invalid language");
+  }
+  return { text, duration, format, language };
 }
 
 function fallbackIntents(text: string): Intent[] {
@@ -145,17 +160,31 @@ async function interpretWithAi(env: Env, text: string): Promise<Intent[]> {
   );
 }
 
-function recommend(intents: Intent[], duration: Duration, format: Format): CatalogueItem[] {
-  return catalogue
+function recommend(intents: Intent[], duration: Duration, format: Format, language: Language): CatalogueItem[] {
+  let candidates = catalogue;
+  if (format !== "any") candidates = candidates.filter((item) => item.type === format);
+  if (language !== "any") {
+    const languageCode = language === "music" ? "m1" : language;
+    candidates = candidates.filter((item) => item.language === languageCode);
+  }
+  if (format !== "course") {
+    const durationMatches = candidates.filter((item) => item.duration.includes(duration));
+    if (durationMatches.length >= 3) candidates = durationMatches;
+  }
+  if (candidates.length < 3) candidates = catalogue;
+
+  return candidates
     .map((item) => {
-      let score = item.intents.filter((intent) => intents.includes(intent as Intent)).length * 4;
-      if (item.duration.includes(duration)) score += 2;
-      if (format === "any" || item.type === format) score += 3;
-      if (intents.length === 0 && item.intents.includes("peace")) score += 1;
+      let score = item.intents.filter((intent) => intents.includes(intent as Intent)).length * 8;
+      if (item.duration.includes(duration)) score += 4;
+      if (format === "any" || item.type === format) score += 5;
+      if (intents.length === 0 && item.intents.includes("peace")) score += 2;
+      score += Math.min(2, Math.log10(Number(item.plays || 0) + 1) / 4);
+      score += Math.min(1, Number(item.rating || 0) / 5);
       return { item, score };
     })
     .sort((a, b) => b.score - a.score)
-    .slice(0, 2)
+    .slice(0, 3)
     .map(({ item }) => item);
 }
 
@@ -196,7 +225,8 @@ export default {
 
       return json({
         intents,
-        matches: recommend(intents, input.duration, input.format),
+        matches: recommend(intents, input.duration, input.format, input.language),
+        catalogueCount: catalogueFile.count,
         mode
       }, 200, origin);
     } catch (error) {
