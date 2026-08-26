@@ -780,6 +780,17 @@ h3 {
   font-size: 28px;
 }
 
+.guide-results .catalogue-status,
+.guide-results .recommendation-meta {
+  color: rgba(253, 251, 247, .58);
+  font-size: 12px;
+  letter-spacing: .03em;
+}
+
+.guide-results .recommendation-meta {
+  margin: -4px 0 10px;
+}
+
 .guide-results .btn {
   border-color: rgba(255, 255, 255, .25);
   color: #fdfbf7;
