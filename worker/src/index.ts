@@ -14,12 +14,14 @@ const INTENTS = [
 
 type Intent = typeof INTENTS[number];
 type Duration = "short" | "medium" | "long";
-type Format = "any" | "music" | "meditation" | "course";
+type Format = "any" | "talk" | "music" | "meditation" | "course";
+type ItemType = "music" | "meditation" | "course";
 type Language = "any" | "music" | "en" | "es";
 type CatalogueItem = {
   id: string;
   title: string;
-  type: Exclude<Format, "any">;
+  type: ItemType;
+  format: string;
   duration: Duration[];
   intents: string[];
   description: string;
@@ -94,7 +96,7 @@ function parseInput(value: unknown): { text: string; duration: Duration; format:
   if (duration !== "short" && duration !== "medium" && duration !== "long") {
     throw new Error("Invalid duration");
   }
-  if (format !== "any" && format !== "music" && format !== "meditation" && format !== "course") {
+  if (format !== "any" && format !== "talk" && format !== "music" && format !== "meditation" && format !== "course") {
     throw new Error("Invalid format");
   }
   if (language !== "any" && language !== "music" && language !== "en" && language !== "es") {
@@ -160,9 +162,17 @@ async function interpretWithAi(env: Env, text: string): Promise<Intent[]> {
   );
 }
 
+function matchesFormat(item: CatalogueItem, format: Format): boolean {
+  if (format === "any") return true;
+  const itemFormat = item.format.toLowerCase();
+  if (format === "talk") return itemFormat === "talk";
+  if (format === "meditation") return item.type === "meditation" && itemFormat !== "talk";
+  return item.type === format;
+}
+
 function recommend(intents: Intent[], duration: Duration, format: Format, language: Language): CatalogueItem[] {
   let candidates = catalogue;
-  if (format !== "any") candidates = candidates.filter((item) => item.type === format);
+  if (format !== "any") candidates = candidates.filter((item) => matchesFormat(item, format));
   if (language !== "any") {
     const languageCode = language === "music" ? "m1" : language;
     candidates = candidates.filter((item) => item.language === languageCode);
@@ -177,7 +187,7 @@ function recommend(intents: Intent[], duration: Duration, format: Format, langua
     .map((item) => {
       let score = item.intents.filter((intent) => intents.includes(intent as Intent)).length * 8;
       if (item.duration.includes(duration)) score += 4;
-      if (format === "any" || item.type === format) score += 5;
+      if (matchesFormat(item, format)) score += 5;
       if (intents.length === 0 && item.intents.includes("peace")) score += 2;
       score += Math.min(2, Math.log10(Number(item.plays || 0) + 1) / 4);
       score += Math.min(1, Number(item.rating || 0) / 5);
