@@ -481,6 +481,17 @@ h3 {
   }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#plugin-email-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(194, 122, 88, 0.18) !important;
+}
+
 .embed-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

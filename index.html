@@ -413,6 +413,37 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Plugin Updates & New Releases Email Form -->
+                <div class="card" style="padding: 2.8rem 2rem; border-radius: 24px; background: linear-gradient(135deg, rgba(194, 122, 88, 0.07) 0%, rgba(44, 54, 43, 0.05) 100%); border: 1px solid rgba(194, 122, 88, 0.22); margin-top: 1.5rem; text-align: center; box-shadow: var(--shadow-sm);">
+                    <div class="subtitle" style="color: var(--accent); font-weight: 700; margin-bottom: 0.6rem; letter-spacing: 0.12em;">STAY IN THE LOOP • NEW RELEASES &amp; PRESET PACKS</div>
+                    <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 0.75rem; color: var(--text-main);">Get Plugin Updates &amp; New Sound Tools</h2>
+                    <p style="max-width: 620px; margin: 0 auto 1.8rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
+                        Be the first to know when I publish new hardware companions, free ambient AU preset expansions, workflow updates, and experimental audio synthesizers.
+                    </p>
+
+                    <form id="plugin-subscribe-form" action="https://formsubmit.co/aztecbird@mac.com" method="POST" style="max-width: 540px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                        <input type="hidden" name="_subject" value="New Subscriber: Music Software &amp; Plugin Updates">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none">
+                        
+                        <div style="position: relative; flex: 1 1 280px; max-width: 360px;">
+                            <input type="email" name="email" id="plugin-email-input" placeholder="Enter your email address..." required style="width: 100%; padding: 14px 20px; border-radius: var(--radius-full); border: 1px solid var(--border); background: #FFFFFF; font-size: 0.98rem; color: var(--text-main); font-family: 'Lato', sans-serif; outline: none; transition: all 0.25s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                        </div>
+
+                        <button type="submit" id="plugin-subscribe-btn" class="btn primary" style="cursor: pointer; padding: 14px 26px; font-size: 0.98rem; display: inline-flex; align-items: center; gap: 8px; border: none; white-space: nowrap;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>Get Updates</span>
+                        </button>
+                    </form>
+
+                    <div id="plugin-subscribe-msg" style="display: none; margin-top: 1.25rem; padding: 12px 20px; border-radius: 12px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #065f46; font-weight: 600; font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto;"></div>
+
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.2rem;">
+                        No spam, ever. Straight from Pablo Arellano's studio. You can unsubscribe at any time.
+                    </div>
+                </div>
             </div>
         </section>
 

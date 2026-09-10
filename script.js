@@ -47,3 +47,78 @@ if (galleryItems.length && lightbox && lightboxImg) {
         }
     });
 }
+
+// Plugin Updates Subscription Form
+const subscribeForm = document.getElementById("plugin-subscribe-form");
+const subscribeEmail = document.getElementById("plugin-email-input");
+const subscribeBtn = document.getElementById("plugin-subscribe-btn");
+const subscribeMsg = document.getElementById("plugin-subscribe-msg");
+
+if (subscribeForm && subscribeEmail && subscribeBtn && subscribeMsg) {
+    if (localStorage.getItem("pablo_plugin_subscribed") === "true") {
+        subscribeMsg.style.display = "block";
+        subscribeMsg.style.background = "rgba(16, 185, 129, 0.08)";
+        subscribeMsg.style.borderColor = "rgba(16, 185, 129, 0.25)";
+        subscribeMsg.style.color = "#065f46";
+        subscribeMsg.innerHTML = "✓ You are subscribed to Pablo's plugin updates &amp; preset releases!";
+        subscribeEmail.value = localStorage.getItem("pablo_plugin_subscribed_email") || "";
+        subscribeBtn.disabled = true;
+        subscribeBtn.style.opacity = "0.7";
+        subscribeBtn.innerHTML = "Subscribed ✓";
+    }
+
+    subscribeForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = subscribeEmail.value.trim();
+        if (!email) return;
+
+        const originalBtnHtml = subscribeBtn.innerHTML;
+        subscribeBtn.disabled = true;
+        subscribeBtn.style.opacity = "0.7";
+        subscribeBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle></svg>
+            <span>Subscribing...</span>
+        `;
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/aztecbird@mac.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    _subject: "New Subscriber: Music Software & Plugin Updates",
+                    _template: "table"
+                })
+            });
+
+            if (response.ok) {
+                subscribeMsg.style.display = "block";
+                subscribeMsg.style.background = "rgba(16, 185, 129, 0.1)";
+                subscribeMsg.style.borderColor = "rgba(16, 185, 129, 0.3)";
+                subscribeMsg.style.color = "#065f46";
+                subscribeMsg.innerHTML = "✓ Thank you! You're now on the list to receive plugin updates, free preset packs, and new releases.";
+                subscribeEmail.value = "";
+                subscribeBtn.innerHTML = "Subscribed ✓";
+                try {
+                    localStorage.setItem("pablo_plugin_subscribed", "true");
+                    localStorage.setItem("pablo_plugin_subscribed_email", email);
+                } catch (err) {}
+            } else {
+                throw new Error("Form submission response not ok");
+            }
+        } catch (err) {
+            subscribeMsg.style.display = "block";
+            subscribeMsg.style.background = "rgba(239, 68, 68, 0.1)";
+            subscribeMsg.style.borderColor = "rgba(239, 68, 68, 0.3)";
+            subscribeMsg.style.color = "#991b1b";
+            subscribeMsg.innerHTML = `Direct email submission: <a href="mailto:aztecbird@mac.com?subject=Plugin%20Updates%20Subscription&body=Please%20subscribe%20${encodeURIComponent(email)}%20to%20plugin%20updates." style="color: inherit; text-decoration: underline;">Click here to send to aztecbird@mac.com</a>`;
+            subscribeBtn.disabled = false;
+            subscribeBtn.style.opacity = "1";
+            subscribeBtn.innerHTML = originalBtnHtml;
+        }
+    });
+}
+
