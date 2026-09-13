@@ -36,3 +36,20 @@ Repository: https://github.com/Aztecbird/pablo-website
   - Looper & Hold sampler auto-triggers (CC 17 / CC 102).
 - **[v1.2.0] (Planned):**
   - Standalone AU / VST3 plugin wrapper or Logic Pro Scripter extension.
+
+## [v1.1.0] - 2026-09-13 (Expanded Algorithm & 6-Parameter Suite)
+**Status: Production Live**
+- **Algorithm Engine Selection (via MIDI Program Change):**
+  - **WARP** (Glitch, Program 0)
+  - **INTERRUPT** (Glitch Stutter, Program 1)
+  - **TUNNEL** (Granular Ambient Wash, Program 4)
+  - **MAZE** (Rhythmic Multi-Tap Delay, Program 8)
+  - **MOSAIC** (Granular, Program 12)
+  - **HAZE** (Granular, Program 16)
+- **Expanded 6-Parameter Dynamic Control:**
+  - **Activity (CC 25):** Granular density and burst generation.
+  - **Repeats (CC 26):** Decay length and buffer memory.
+  - **Time / Tap (CC 27):** Tempo subdivision and clock sync.
+  - **Mix (CC 28)**, **Space (CC 29)**, and **Filter (CC 30)**.
+- **Enhanced Prompt Interpreter:**
+  - Algorithm-aware parsing: automatically tunes ranges for Warp, Interrupt, Tunnel, and Maze based on text prompts.
