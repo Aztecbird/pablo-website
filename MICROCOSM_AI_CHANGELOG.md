@@ -53,3 +53,11 @@ Repository: https://github.com/Aztecbird/pablo-website
   - **Mix (CC 28)**, **Space (CC 29)**, and **Filter (CC 30)**.
 - **Enhanced Prompt Interpreter:**
   - Algorithm-aware parsing: automatically tunes ranges for Warp, Interrupt, Tunnel, and Maze based on text prompts.
+
+## [v1.2.0] - 2026-09-13 (C4 Register Split: Dramatic Bass vs Bright Treble)
+**Status: Production Live**
+- **Dynamic Keyboard Split (Pivoting at Middle C / C4 = Note 60):**
+  - **Descending below C4 (Bass / Dramatic):** The deeper you play into the lower registers, the pedal automatically drives the **Filter (CC 30)** down into warm, dark resonance (down to 25–45), lengthens **Repeats (CC 26)** to create a looming, cavernous decay, and deepens **Space (CC 29)**.
+  - **Ascending above C4 (Treble / Bright & Cheerful):** Climbing into the higher octaves smoothly opens the **Filter** up to 80–120 (sparkling high-pass/open cutoff), triggers airy shimmer **Space**, and generates delicate fluttering **Activity (CC 25)** grains.
+- **HUD Register Feedback:** The telemetry display now indicates note name and active register mode: `C3 (#48) [Bass / Dramatic]` vs `E5 (#76) [Treble / Bright]`.
+- **Velocity Layering:** Touch velocity continues to modulate dynamics (soft touches expand wash, aggressive hits tighten the mix) in tandem with pitch tracking.
