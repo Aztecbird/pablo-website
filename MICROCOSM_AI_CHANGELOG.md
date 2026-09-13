@@ -61,3 +61,13 @@ Repository: https://github.com/Aztecbird/pablo-website
   - **Ascending above C4 (Treble / Bright & Cheerful):** Climbing into the higher octaves smoothly opens the **Filter** up to 80–120 (sparkling high-pass/open cutoff), triggers airy shimmer **Space**, and generates delicate fluttering **Activity (CC 25)** grains.
 - **HUD Register Feedback:** The telemetry display now indicates note name and active register mode: `C3 (#48) [Bass / Dramatic]` vs `E5 (#76) [Treble / Bright]`.
 - **Velocity Layering:** Touch velocity continues to modulate dynamics (soft touches expand wash, aggressive hits tighten the mix) in tandem with pitch tracking.
+
+## [v1.3.0] - 2026-09-13 (Dual Pedal Station: Microcosm + Strymon NightSky)
+**Status: Production Live**
+- **Dual MIDI Routing Architecture:**
+  - **Hologram Microcosm:** Dedicated to **MIDI Channel 1** (CC 28 Mix, CC 29 Space, CC 30 Filter, CC 25 Activity, and Algorithm Program Changes).
+  - **Strymon NightSky:** Dedicated to **MIDI Channel 2** (CC 15 Reverb Mix, CC 17 Decay, CC 21 Low-Pass Filter, CC 26 Harmonic Shimmer, CC 70 Infinite Freeze).
+- **Infinite Freeze Latch (NightSky CC 70):** Instant 1-click reverb drone hold button in the UI.
+- **Unified C4 Keyboard Tracking Across Both Pedals:**
+  - Lower notes ($< C4$): Microcosm dips into dark granular warps while NightSky opens an enormous, warm cavernous decay.
+  - Higher notes ($> C4$): Microcosm opens high-pass cutoff while NightSky triggers sparkling crystalline harmonic shimmer.
