@@ -71,3 +71,10 @@ Repository: https://github.com/Aztecbird/pablo-website
 - **Unified C4 Keyboard Tracking Across Both Pedals:**
   - Lower notes ($< C4$): Microcosm dips into dark granular warps while NightSky opens an enormous, warm cavernous decay.
   - Higher notes ($> C4$): Microcosm opens high-pass cutoff while NightSky triggers sparkling crystalline harmonic shimmer.
+
+## [v1.4.0] - 2026-09-14 (Strymon NightSky 8 Favorite Preset Recaller)
+**Status: Production Live**
+- **Instant Recall for Strymon NightSky 8 Favorites:**
+  - Dedicated preset selector strip on the NightSky console: `⭐ Fav 1` through `⭐ Fav 8`.
+  - Transmits standard MIDI Program Change (PC #0 through PC #7) on NightSky's MIDI Channel 2.
+  - Recalls custom user-stored patches, reverb styles, mod depths, and shimmer tunings on the fly.
