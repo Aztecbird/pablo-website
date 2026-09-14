@@ -78,3 +78,15 @@ Repository: https://github.com/Aztecbird/pablo-website
   - Dedicated preset selector strip on the NightSky console: `⭐ Fav 1` through `⭐ Fav 8`.
   - Transmits standard MIDI Program Change (PC #0 through PC #7) on NightSky's MIDI Channel 2.
   - Recalls custom user-stored patches, reverb styles, mod depths, and shimmer tunings on the fly.
+
+## [v1.5.0] - 2026-09-14 (Hyper-Sensitive Velocity & Custom NightSky Ambient Engines)
+**Status: Production Live**
+- **Hyper-Sensitive Velocity Scaling:**
+  - Soft touches ($vel < 50$) dynamically bloom wet mix on both pedals (up to 85–93%), allowing piano passages to float into deep, ethereal space.
+  - Forte & aggressive strikes ($vel > 85$) pull mix down to 32–35% so that the attack of chords stays punchy and defined.
+- **Custom Relaxing & Expansive NightSky Presets (Direct MIDI CC):**
+  - **🌊 Deep Ocean (Cavern):** Massive low-pass decay (75% mix, 110 decay, 48 filter) with zero ear fatigue.
+  - **✨ Celestial Shimmer:** Harmonic crystal overtone clouds blooming on high notes (95 shimmer, 105 filter).
+  - **🏛 Endless Cathedral:** Colossal acoustic space with lingering reflections (80% mix, 120 decay).
+  - **🍃 Ethereal Breeze:** Floating, airy ambient bed with soft chorus flutter.
+- **NightSky MIDI Channel Switcher:** Quick UI selector between Channel 2 (default) and Channel 1 for instant compatibility without menu diving.
