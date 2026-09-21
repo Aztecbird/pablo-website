@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spirit of Love — Your Free Gift | Pablo Arellano</title>
+    <link rel="canonical" href="https://pabloarellano.org/spirit-of-love.html" />
+    <meta name="description"
+        content="Listen to and download Spirit of Love, a special piano gift from Pablo Arellano." />
+    <meta name="author" content="Pablo Arellano" />
+
+    <meta property="og:type" content="music.song" />
+    <meta property="og:url" content="https://pabloarellano.org/spirit-of-love.html" />
+    <meta property="og:title" content="Spirit of Love — Your Free Gift | Pablo Arellano" />
+    <meta property="og:description"
+        content="A piano prayer without words. For when love feels close and you want to sit, breathe, and feel held." />
+    <meta property="og:image" content="https://pabloarellano.org/pablo_portrait.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .player-card {
+            max-width: 680px;
+            margin: 60px auto 100px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        audio {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 30px;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #121212;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            background: #e5c358;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrap header-row">
+            <div class="brand"><a href="/" style="text-decoration: none; color: inherit;">Pablo Arellano</a></div>
+            <nav class="nav">
+                <a href="/" style="color: inherit;">Home</a>
+                <a href="/guide.html">Peace Guide</a>
+                <a href="/listen.html">Listen</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="player-card">
+            <div class="subtitle" style="color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;">Your Free Piano Gift</div>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(34px, 5vw, 48px); margin: 12px 0 16px;">
+                Spirit of Love
+            </h1>
+            <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.7; max-width: 520px; margin: 0 auto;">
+                <em>"A prayer without words. For when love feels close, but you can't explain it. For when you just want to sit, breathe, and feel held."</em>
+            </p>
+
+            <!-- HTML5 Audio Player -->
+            <audio controls preload="metadata">
+                <source src="spirit-of-love.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <div>
+                <a class="download-btn" href="spirit-of-love.mp3" download="Pablo Arellano - Spirit of Love.mp3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download High Quality MP3
+                </a>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
+                Composed and played with love in Mérida by Pablo Arellano
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="wrap">
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 40px 0;">
+                © 2026 Pablo Arellano. All rights reserved. • <a href="/" style="color: inherit;">pabloarellano.org</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
