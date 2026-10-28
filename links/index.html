@@ -80,23 +80,33 @@ body {
   position: relative;
   width: 100%;
   max-width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 420px;
-  min-height: 240px;
-  background: url("hero.jpg") 45% 68% / cover no-repeat;
+  aspect-ratio: 5000 / 1534;
+  max-height: 380px;
+  min-height: 170px;
+  background: url("banner.jpg") 72% 50% / cover no-repeat;
 }
-.page { position: relative; margin-top: 28px; }
+.page { position: relative; margin-top: 0; padding-top: 36px; }
 
 .who {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 10px;
 }
+.avatar {
+  width: 92px;
+  height: 92px;
+  max-width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2px;
+}
 .name {
-  font-family: var(--wordmark);
-  font-weight: 600;
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: -0.015em;
   line-height: 1.15;
   margin: 0;
 }
@@ -105,8 +115,8 @@ body {
   color: var(--copy);
   font-size: 1.08rem;
   line-height: 1.6;
-  max-width: 40ch;
-  text-wrap: pretty;
+  max-width: 36ch;
+  text-wrap: balance;
 }
 
 .links {
@@ -115,30 +125,63 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
-.link {
+.card {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+}
+.card .eyebrow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 20px;
-  border-radius: var(--radius);
-  background: var(--panel);
-  color: var(--fg);
-  text-decoration: none;
-  transition: background-color 150ms ease;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-.link:hover { background: color-mix(in srgb, var(--panel) 85%, var(--fg) 15%); }
-.link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-.link .txt { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.link .t { font-weight: 600; font-size: 1.02rem; }
-.link .s { font-size: 0.9rem; color: var(--muted); }
-.link .arrow { font-weight: 600; flex: none; }
-
-.link.primary { background: var(--gold); color: var(--gold-fg); }
-.link.primary:hover { background: var(--gold-hover); }
-.link.primary .s { color: var(--gold-fg); opacity: 0.88; }
+.card .eyebrow svg { width: 22px; height: 22px; color: var(--fg); flex: none; }
+.card .title {
+  margin: 0;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.card .desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--copy);
+  max-width: 34ch;
+}
+.btn {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+.btn:hover { opacity: 0.88; }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.btn.gold { background: var(--gold); color: var(--gold-fg); }
 
 .foot {
   margin: 4px 0 0;
@@ -188,40 +231,33 @@ body {
 .copy:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .link { transition: none; }
+  .btn { transition: none; }
 }
 </style>
 </head>
 <body>
-<div class="hero" role="img" aria-label="Pablo Arellano playing a grand piano on a mountain top above the clouds at dusk"></div>
-
 <main class="page">
 
   <header class="who">
+    <img class="avatar" src="avatar.jpg" alt="Pablo Arellano" width="92" height="92">
     <h1 class="name">Pablo Arellano</h1>
-    <p class="line">Music for peace, sleep and meditation. Courses and live piano for a quieter space in your day.</p>
+    <p class="line">Music for peace, sleep and meditation</p>
   </header>
 
-  <ul class="links">
-    <li>
-      <a class="link primary" id="link-community" href="https://chat.whatsapp.com/DaE6Rxzg3lm4naEIEAE8XI" target="_blank" rel="noopener">
-        <span class="txt">
-          <span class="t">Join the WhatsApp community</span>
-          <span class="s">Concert dates and new music, straight to your phone</span>
-        </span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </li>
-    <li>
-      <a class="link" id="link-website" href="https://pabloarellano.org" target="_blank" rel="noopener">
-        <span class="txt">
-          <span class="t">Visit the website</span>
-          <span class="s">Free gift: 9 hours of deep sleep music</span>
-        </span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </li>
-  </ul>
+  <div class="links">
+    <section class="card" aria-labelledby="t-community">
+      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"/><path d="M9 10h6M9 13.5h4"/></svg>Community</p>
+      <h2 class="title" id="t-community">Piano &amp; Stillness</h2>
+      <p class="desc">Concert dates and new music, with a reminder before each live concert.</p>
+      <a class="btn gold" id="link-community" href="https://chat.whatsapp.com/DaE6Rxzg3lm4naEIEAE8XI" target="_blank" rel="noopener">Join WhatsApp →</a>
+    </section>
+    <section class="card" aria-labelledby="t-website">
+      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.5 5.4 3.5 8.5s-1.1 5.9-3.5 8.5c-2.4-2.6-3.5-5.4-3.5-8.5S9.6 6.1 12 3.5Z"/></svg>Website</p>
+      <h2 class="title" id="t-website">Music, Courses &amp; Free Gift</h2>
+      <p class="desc">Free gift: 9 hours of deep sleep music, plus courses and meditations.</p>
+      <a class="btn" id="link-website" href="https://pabloarellano.org" target="_blank" rel="noopener">Visit website →</a>
+    </section>
+  </div>
 
   <section class="contact" aria-labelledby="contact-label">
     <p class="label" id="contact-label">Suggestions &amp; comments</p>
